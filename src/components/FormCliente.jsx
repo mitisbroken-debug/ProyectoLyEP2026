@@ -151,7 +151,47 @@ const FormCliente = () => {
                     />
 
                 </Form.Group>
+                <Form.Group className="mb-3">
 
+                    <Form.Label>Calle</Form.Label>
+
+                    <Form.Control
+                        type="text"
+                        value={calle}
+                        onChange={(e) =>
+                            setCalle(e.target.value)
+                        }
+                    />
+
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+
+                    <Form.Label>Número</Form.Label>
+
+                    <Form.Control
+                        type="text"
+                        value={numero}
+                        onChange={(e) =>
+                            setNumero(e.target.value)
+                        }
+                    />
+
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+
+                    <Form.Label>Código Postal</Form.Label>
+
+                    <Form.Control
+                        type="text"
+                        value={codigoPostal}
+                        onChange={(e) =>
+                            setCodigoPostal(e.target.value)
+                        }
+                    />
+
+                </Form.Group>
                 <Button
                     variant="primary"
                     type="submit"
