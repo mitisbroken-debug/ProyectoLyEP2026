@@ -36,25 +36,26 @@ const Login = () => {
     setErrores(nuevosErrores)
     return Object.keys(nuevosErrores).length === 0
   }
-  const manejarSubmit = (e) => {
+  const manejarSubmit = async (e) => {
     e.preventDefault()
     if (!validar()) return
-    const usuario = AutorizacionesService.login(
-      email,
-      password,
-      sector
-    )
-    if (!usuario) {
-     alert('Verifique los datos')
-      return
+    try {
+      const { token, usuario } = await AutorizacionesService.login(
+        email,
+        password,
+        sector
+      )
+      localStorage.setItem('token', token)
+      localStorage.setItem('role', usuario.sector)
+      setAdmin(usuario)
+      navigate('/')
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        alert('Verifique los datos')
+      } else {
+        alert('No se pudo conectar con el servidor. Intente nuevamente.')
+      }
     }
-    localStorage.setItem("role", usuario.sector)
-    setAdmin({
-      nombre: usuario.nombre,
-      email: usuario.email,
-      sector: usuario.sector
-    })
-    navigate('/')
   }
   return (
     <div className="login-container">

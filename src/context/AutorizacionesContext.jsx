@@ -24,6 +24,8 @@ useEffect(()=>{
 },[admin])
 const cerrarSesion=()=>{
   setAdmin(null)
+  localStorage.removeItem('token')
+  localStorage.removeItem('role')
 }
 return (
     <AutorizacionesContext.Provider
