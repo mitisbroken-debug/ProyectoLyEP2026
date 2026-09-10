@@ -77,6 +77,9 @@ const FormCliente = () => {
             setEmail("");
             setTelefono("");
             setCiudad("");
+            setCalle("");
+            setNumero("");
+            setCodigoPostal("");
 
         } catch {
 
