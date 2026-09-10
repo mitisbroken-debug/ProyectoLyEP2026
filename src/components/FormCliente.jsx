@@ -9,6 +9,9 @@ const FormCliente = () => {
     const [email, setEmail] = useState("");
     const [telefono, setTelefono] = useState("");
     const [ciudad, setCiudad] = useState("");
+    const [calle, setCalle] = useState("");
+    const [numero, setNumero] = useState("");
+    const [codigoPostal, setCodigoPostal] = useState("");
 
     const [mensaje, setMensaje] = useState("");
     const [error, setError] = useState("");
