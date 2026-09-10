@@ -28,10 +28,13 @@ const FormCliente = () => {
             nombre.trim() === "" ||
             email.trim() === "" ||
             telefono.trim() === "" ||
-            ciudad.trim() === ""
+            ciudad.trim() === "" ||
+            calle.trim() === "" ||
+            numero.trim() === "" ||
+            codigoPostal.trim() === ""
         ) {
 
-            setError("Complete todos los campos.");
+            setError("Complete todos los campos, incluida la dirección completa.");
 
             return;
         }
