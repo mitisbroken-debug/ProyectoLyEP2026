@@ -9,6 +9,9 @@ const FormCliente = () => {
     const [email, setEmail] = useState("");
     const [telefono, setTelefono] = useState("");
     const [ciudad, setCiudad] = useState("");
+    const [calle, setCalle] = useState("");
+    const [numero, setNumero] = useState("");
+    const [codigoPostal, setCodigoPostal] = useState("");
 
     const [mensaje, setMensaje] = useState("");
     const [error, setError] = useState("");
@@ -25,33 +28,37 @@ const FormCliente = () => {
             nombre.trim() === "" ||
             email.trim() === "" ||
             telefono.trim() === "" ||
-            ciudad.trim() === ""
+            ciudad.trim() === "" ||
+            calle.trim() === "" ||
+            numero.trim() === "" ||
+            codigoPostal.trim() === ""
         ) {
 
-            setError("Complete todos los campos.");
+            setError("Complete todos los campos, incluida la dirección completa.");
 
             return;
         }
 
         const nuevoCliente = {
 
-            email,
+                email,
 
-            username: nombre.toLowerCase().replace(/\s/g, ""),
+                username: nombre.toLowerCase().replace(/\s/g, ""),
 
-            password: "1234",
+                name: {
+                    firstname: nombre,
+                    lastname: "-"
+                },
 
-            name: {
-                firstname: nombre,
-                lastname: "-"
-            },
+                address: {
+                    city: ciudad,
+                    street: calle,
+                    number: numero,
+                    zipcode: codigoPostal
+                },
 
-            address: {
-                city: ciudad
-            },
-
-            phone: telefono
-        };
+                phone: telefono
+            };
 
         try {
 
@@ -70,6 +77,9 @@ const FormCliente = () => {
             setEmail("");
             setTelefono("");
             setCiudad("");
+            setCalle("");
+            setNumero("");
+            setCodigoPostal("");
 
         } catch {
 
@@ -148,7 +158,47 @@ const FormCliente = () => {
                     />
 
                 </Form.Group>
+                <Form.Group className="mb-3">
 
+                    <Form.Label>Calle</Form.Label>
+
+                    <Form.Control
+                        type="text"
+                        value={calle}
+                        onChange={(e) =>
+                            setCalle(e.target.value)
+                        }
+                    />
+
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+
+                    <Form.Label>Número</Form.Label>
+
+                    <Form.Control
+                        type="text"
+                        value={numero}
+                        onChange={(e) =>
+                            setNumero(e.target.value)
+                        }
+                    />
+
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+
+                    <Form.Label>Código Postal</Form.Label>
+
+                    <Form.Control
+                        type="text"
+                        value={codigoPostal}
+                        onChange={(e) =>
+                            setCodigoPostal(e.target.value)
+                        }
+                    />
+
+                </Form.Group>
                 <Button
                     variant="primary"
                     type="submit"
