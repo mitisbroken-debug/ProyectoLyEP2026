@@ -88,9 +88,7 @@ const DetalleCliente = () => {
         <strong>Usuario:</strong> {cliente.username}
       </p>
 
-      <p>
-        <strong>Contraseña:</strong> {cliente.password}
-      </p>
+
 
       {role?.trim() === "Gerencia" && (
         <button className='btn-eliminar'onClick={eliminarCliente}>
