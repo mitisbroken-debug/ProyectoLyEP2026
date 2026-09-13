@@ -36,9 +36,9 @@ const DetalleCliente = () => {
       setMensaje("Error al eliminar cliente");
     }
   };
-  if (!cliente) {
-    return <h2>Cargando cliente...</h2>;
-  }
+ if (!cliente) {
+  return <h2 className="detalle-cliente-cargando">Cargando datos del cliente...</h2>;
+}
 
   return (
     <div className="detalle-cliente">
