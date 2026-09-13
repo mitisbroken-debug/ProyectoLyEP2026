@@ -11,11 +11,11 @@ const DetalleCliente = () => {
   const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/users/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCliente(data));
-  }, [id]);
-
+  fetch(`https://fakestoreapi.com/users/${id}`)
+    .then((res) => res.json())
+    .then((data) => setCliente(data))
+    .catch(() => setMensaje("Error al cargar los datos del cliente"));
+}, [id]);
   const eliminarCliente = async () => {
     try {
       const respuesta = await fetch(
@@ -36,9 +36,9 @@ const DetalleCliente = () => {
       setMensaje("Error al eliminar cliente");
     }
   };
-  if (!cliente) {
-    return <h2>Cargando cliente...</h2>;
-  }
+ if (!cliente) {
+  return <h2 className="detalle-cliente-cargando">Cargando datos del cliente...</h2>;
+}
 
   return (
     <div className="detalle-cliente">
@@ -82,15 +82,14 @@ const DetalleCliente = () => {
         <strong>Ciudad:</strong> {cliente.address.city}
       </p>
 
-      <h2>Credenciales</h2>
+     {/* No se muestra la contraseña del cliente por motivos de seguridad y privacidad */}
+<h2>Datos de acceso</h2>
 
       <p>
         <strong>Usuario:</strong> {cliente.username}
       </p>
 
-      <p>
-        <strong>Contraseña:</strong> {cliente.password}
-      </p>
+
 
       {role?.trim() === "Gerencia" && (
         <button className='btn-eliminar'onClick={eliminarCliente}>
