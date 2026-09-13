@@ -82,7 +82,7 @@ const DetalleCliente = () => {
         <strong>Ciudad:</strong> {cliente.address.city}
       </p>
 
-      <h2>Credenciales</h2>
+     <h2>Datos de acceso</h2>
 
       <p>
         <strong>Usuario:</strong> {cliente.username}
