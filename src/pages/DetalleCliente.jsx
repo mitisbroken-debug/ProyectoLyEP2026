@@ -1,4 +1,4 @@
-import '../css/detallecliente.css'
+import '../css/detallecliente.css';
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -11,7 +11,6 @@ const DetalleCliente = () => {
   const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
-    
     fetch(`https://fakestoreapi.com/users/${id}`)
       .then((res) => res.json())
       .then((data) => setCliente(data))
@@ -19,11 +18,9 @@ const DetalleCliente = () => {
   }, [id]);
 
   const eliminarCliente = async () => {
-    
     const token = localStorage.getItem("token");
 
     try {
-      
       const respuesta = await fetch(`http://localhost:3000/api/clientes/${id}`, {
         method: "DELETE",
         headers: {
@@ -40,10 +37,8 @@ const DetalleCliente = () => {
           navigate("/clientes");
         }, 2000);
       } else if (respuesta.status === 403) {
-        // Rechazado por esGerencia
         setMensaje("Acceso denegado: Se requieren permisos de Gerencia.");
       } else if (respuesta.status === 401) {
-        // Rechazado por verificarToken
         setMensaje("Sesión expirada o no autorizada. Iniciá sesión nuevamente.");
       } else {
         setMensaje(data.mensaje || "Error al eliminar el cliente.");
