@@ -82,7 +82,8 @@ const DetalleCliente = () => {
         <strong>Ciudad:</strong> {cliente.address.city}
       </p>
 
-     <h2>Datos de acceso</h2>
+     {/* No se muestra la contraseña del cliente por motivos de seguridad y privacidad */}
+<h2>Datos de acceso</h2>
 
       <p>
         <strong>Usuario:</strong> {cliente.username}
