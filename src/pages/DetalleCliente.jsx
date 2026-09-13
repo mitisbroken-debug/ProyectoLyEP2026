@@ -11,11 +11,11 @@ const DetalleCliente = () => {
   const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/users/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCliente(data));
-  }, [id]);
-
+  fetch(`https://fakestoreapi.com/users/${id}`)
+    .then((res) => res.json())
+    .then((data) => setCliente(data))
+    .catch(() => setMensaje("Error al cargar los datos del cliente"));
+}, [id]);
   const eliminarCliente = async () => {
     try {
       const respuesta = await fetch(
